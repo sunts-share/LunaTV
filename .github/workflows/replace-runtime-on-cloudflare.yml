@@ -1,0 +1,20 @@
+name: Replace runtime in route.ts
+on:
+  workflow_dispatch:
+jobs:
+  replace-runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cloudflare
+      - name: Replace runtime
+        run: |
+          find src/app/api/ -name route.ts -exec sed -i "s/export const runtime = 'nodejs';/export const runtime = 'edge';/g" {} +
+      - name: Commit changes
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add .
+          git commit -m "chore: set runtime to edge in all route.ts" || echo "No changes to commit"
+          git push origin cloudflare
