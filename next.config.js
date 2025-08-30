@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 const nextConfig = {
-  runtime: 'edge',
   output: 'standalone',
   eslint: {
     dirs: ['src'],
