@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 /* eslint-disable @typescript-eslint/no-var-requires */
-
+export const runtime = 'edge';
 const nextConfig = {
   output: 'standalone',
   eslint: {
